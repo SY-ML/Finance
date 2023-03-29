@@ -11,4 +11,3 @@ class DataFrameDBnomics():
 
         self.df = pd.read_csv(read_from)
 
-
