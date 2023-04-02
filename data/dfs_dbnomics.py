@@ -1,5 +1,5 @@
 import pandas as pd
-from config_dbnomics import ConfigDBnomics
+from .config_dbnomics import ConfigDBnomics
 
 cfg = ConfigDBnomics()
 

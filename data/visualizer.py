@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-from config_dbnomics import ConfigDBnomics
-from dfs_dbnomics import DataFrameDBnomics
+from .config_dbnomics import ConfigDBnomics
+from .dfs_dbnomics import DataFrameDBnomics
 
 cfg = ConfigDBnomics()
 dict_code = cfg.dict_code
@@ -23,7 +23,7 @@ def plot_multiple_series_by_keyword(ls_dfs, x='period', y='value'):
     plt.show()
 
 
-def plot_multiple_series_with_twinx(df1, df1_type, df2, df2_type, log_scale=False):
+def plot_multiple_series_with_twinx(df1, df2, df1_type='line', df2_type='line', log_scale=False):
 
     # Create a figure and axis
     fig, ax1 = plt.subplots()
@@ -66,6 +66,31 @@ def plot_multiple_series_with_twinx(df1, df1_type, df2, df2_type, log_scale=Fals
     # Display the plot
     plt.show()
 
+
+def plot_with_moving_average(df, windows = [5, 10, 20, 80, 120, 240]):
+
+    # Define the data_gold and x-axis values
+    x = df['period']
+    y = df['value']
+
+    # Create the figure and axis objects
+    fig, ax = plt.subplots(figsize=(10, 5))
+
+    # Plot the data_gold
+    ax.plot(x, y, label='Value')
+
+    # Plot the moving averages
+    for window in windows:
+        ma = df['value'].rolling(window=window, min_periods=1).mean()
+        ax.plot(x, ma, label=f'MA ({window})')
+
+    # Set the axis labels and legend
+    ax.set_xlabel('Period')
+    ax.set_ylabel('Value')
+    ax.legend()
+
+    # Show the plot
+    plt.show()
 
 #
 #

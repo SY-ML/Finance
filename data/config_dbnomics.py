@@ -1,7 +1,7 @@
 
 class ConfigDBnomics():
     def __init__(self):
-        self.archive_path = '../DBnomics'
+        self.archive_path = './DBnomics'
         self.dict_code = {'gold': "LBMA/gold/gold_D_USD_PM",
                  'silver': "LBMA/silver/silver_D_USD",
                  'prate_us': 'FED/PRATES_PRATES_POLICY_RATES/RESBME_N.D'}
@@ -19,17 +19,3 @@ class ConfigDBnomics():
 
         return file_name
 
-
-# def archive_path():
-#     return '../DBnomics'
-#
-#
-# def dict_dataset_code_on_DBnomics():
-#     dict_data = {'gold': "LBMA/gold/gold_D_USD_PM",
-#                  'silver': "LBMA/silver/silver_D_USD",
-#                  'prate_us': 'FED/PRATES_PRATES_POLICY_RATES/RESBME_N.D'}
-#     return dict_data
-#
-#
-
-#

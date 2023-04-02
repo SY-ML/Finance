@@ -1,6 +1,6 @@
 import dbnomics
 import pandas as pd
-from config_dbnomics import ConfigDBnomics
+from .config_dbnomics import ConfigDBnomics
 
 '''
 DBnomics ULR is as follows:
@@ -21,3 +21,5 @@ class DataGenerator_DBnomics():
             data = dbnomics.fetch_series(code) # Fetch data by code
             df = pd.DataFrame(data) # Make it DataFrame
             df.to_csv(path_data, index=False) # Export as csv
+
+        self.df = df
