@@ -11,7 +11,7 @@ dict_code = cfg.dict_code
 def plot_multiple_series_by_keyword(ls_dfs, x='period', y='value'):
 
     # Create a figure and axis for the line plot
-    f, ax1 = plt.subplot()
+    f, ax1 = plt.subplots()
     for df in ls_dfs:
         label = df['dataset_code'].unique()
         # Plot the data frames on the same line plot

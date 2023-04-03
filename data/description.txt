@@ -1,0 +1,63 @@
+The broad dollar index consists of the currencies of a diverse group of countries, which are major trading partners of the United States. The list of countries and their respective currencies may change over time as global trade patterns evolve. As of my knowledge cutoff date in September 2021, the broad dollar index included the following countries and their currencies:
+
+Euro area (euro)
+Canada (Canadian dollar)
+Japan (Japanese yen)
+Mexico (Mexican peso)
+China (Chinese yuan)
+United Kingdom (British pound)
+Taiwan (Taiwanese dollar)
+Korea (South Korean won)
+Singapore (Singapore dollar)
+Hong Kong (Hong Kong dollar)
+Malaysia (Malaysian ringgit)
+Brazil (Brazilian real)
+Switzerland (Swiss franc)
+Thailand (Thai baht)
+Philippines (Philippine peso)
+Australia (Australian dollar)
+Indonesia (Indonesian rupiah)
+India (Indian rupee)
+Israel (Israeli new shekel)
+Saudi Arabia (Saudi riyal)
+Russia (Russian ruble)
+Sweden (Swedish krona)
+Argentina (Argentine peso)
+Turkey (Turkish lira)
+Chile (Chilean peso)
+Colombia (Colombian peso)
+
+# AFE Dollar Index
+As of my knowledge cutoff in September 2021, the nominal Advanced Foreign Economies (AFE) dollar index, also known as the "major currencies index," consists of the currencies of major advanced economies that are significant trading partners of the United States. The index includes the following countries and their respective currencies:
+
+Euro area (euro)
+Canada (Canadian dollar)
+Japan (Japanese yen)
+United Kingdom (British pound)
+Switzerland (Swiss franc)
+Australia (Australian dollar)
+Sweden (Swedish krona)
+
+# EME Dollar Index
+The Nominal Emerging Market Economies (EME) dollar index represents the U.S. dollar's value relative to a basket of currencies from emerging market economies that are significant trading partners of the United States. As of my knowledge cutoff date in September 2021, the EME dollar index included the following countries and their respective currencies:
+
+China (Chinese yuan)
+Mexico (Mexican peso)
+Korea (South Korean won)
+Taiwan (Taiwanese dollar)
+Malaysia (Malaysian ringgit)
+Brazil (Brazilian real)
+Thailand (Thai baht)
+Philippines (Philippine peso)
+Indonesia (Indonesian rupiah)
+India (Indian rupee)
+Israel (Israeli new shekel)
+Saudi Arabia (Saudi riyal)
+Russia (Russian ruble)
+Argentina (Argentine peso)
+Turkey (Turkish lira)
+Chile (Chilean peso)
+Colombia (Colombian peso)
+Singapore (Singapore dollar)
+Hong Kong (Hong Kong dollar)
+
