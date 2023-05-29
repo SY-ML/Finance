@@ -1,3 +1,8 @@
+import tensorflow as tf
+print("GPU Available: ", tf.config.list_physical_devices('GPU'))
+print("CUDA Version: ", tf.sysconfig.get_build_info()["cuda_version"])
+print("cuDNN Version: ", tf.sysconfig.get_build_info()["cudnn_version"])
+
 import yfinance as yf
 import numpy as np
 from tensorflow.keras.models import Sequential
@@ -17,11 +22,14 @@ tickerSymbol = 'MVST'
 data = yf.Ticker(tickerSymbol)
 
 # Get the historical prices for this ticker
-dadta = data.history(period='1d', start='2020-1-1', end='2023-12-31')
+data = data.history(period='1d', start='2020-1-1', end='2023-12-31')
 
 # Assuming 'data' is your DataFrame and 'High' is the target column
 data_input = data.drop('High', axis=1)
 data_target = data['High']
+
+print(data_input)
+print(data_target)
 
 # Scale the input data to [0, 1] range
 scaler = MinMaxScaler(feature_range=(0, 1))
@@ -57,3 +65,29 @@ model.fit(
     validation_split=0.2,  # set validation split for early stopping
     callbacks=[early_stopping, checkpoint]
 )
+
+import matplotlib.pyplot as plt
+
+# Fit the LSTM model
+history = model.fit(
+    X_train,
+    y_train,
+    epochs=100,
+    batch_size=72,
+    verbose=0,
+    validation_split=0.2,  # set validation split for early stopping
+    callbacks=[early_stopping, checkpoint]
+)
+
+# Plot the training and validation loss
+plt.figure(figsize=(10,6))
+
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+
+plt.title('Model Loss')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+
+plt.legend(loc='upper right')
+plt.show()
