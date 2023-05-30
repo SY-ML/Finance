@@ -22,7 +22,7 @@ tickerSymbol = 'MVST'
 data = yf.Ticker(tickerSymbol)
 
 # Get the historical prices for this ticker
-data = data.history(period='1d', start='2020-1-1', end='2023-12-31')
+data = data.history(period='1d', start='2019-1-1', end='2023-12-31')
 
 # Assuming 'data' is your DataFrame and 'High' is the target column
 data_input = data.drop('High', axis=1)
@@ -30,7 +30,7 @@ data_target = data['High']
 
 print(data_input)
 print(data_target)
-
+exit()
 # Scale the input data to [0, 1] range
 scaler = MinMaxScaler(feature_range=(0, 1))
 data_input_scaled = scaler.fit_transform(data_input)
