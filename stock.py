@@ -3,6 +3,9 @@ print("GPU Available: ", tf.config.list_physical_devices('GPU'))
 print("CUDA Version: ", tf.sysconfig.get_build_info()["cuda_version"])
 print("cuDNN Version: ", tf.sysconfig.get_build_info()["cudnn_version"])
 
+# https://www.kaggle.com/general/272226
+# https://www.kaggle.com/code/faressayah/stock-market-analysis-prediction-using-lstm
+
 import yfinance as yf
 import numpy as np
 from tensorflow.keras.models import Sequential
