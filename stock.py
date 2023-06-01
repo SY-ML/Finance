@@ -18,10 +18,26 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
+
+
+class StockPrice():
+    def __init__(self, ticker, date_from, date_to):
+        self._ticker = ticker
+        self._date_from = date_from
+        self._date_to = date_to
+
+    def fetch_stock_price_via_yfinance(self):
+        data = yf.Ticker(self._ticker)
+        data = data.history(period='1d', start=self._date_from, end= self._date_to)
+        return data
 def fetch_stock_price_via_yfinance(ticker, date_from, date_to):
     data = yf.Ticker(ticker)
-    data = data.history(period='1d', start=date_from, end=date_to)
+    data = data.history(period='1d', start=date_from, end= date_to)
     return data
+
+
+
+# sp = StockPrice()
 """
 Lithium-Ion Battery Manufacturers:
 
@@ -36,6 +52,12 @@ Solid Power, Inc.: SLDP on the NASDAQ​8​.
 QuantumScape Corporation: QS on the NYSE​9​.
 """
 
+ls_compt = {'CATL': '300750.SZ', 'LGChem':'051910.KS', 'Pnasonic': '6752.T', 'BYD':'BYDDY', 'SolidPower': 'SLDP', 'QuantumScape':'QS', 'Tesla':'TSLA'}
+
+for com in ls_compt.values():
+
+    print(f'com = {ls_compt[com]}')
+exit()
 
 # Define the ticker symbol
 tickerSymbol = 'MVST'
