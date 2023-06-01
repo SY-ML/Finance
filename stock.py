@@ -18,6 +18,25 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
+def fetch_stock_price_via_yfinance(ticker, date_from, date_to):
+    data = yf.Ticker(ticker)
+    data = data.history(period='1d', start=date_from, end=date_to)
+    return data
+"""
+Lithium-Ion Battery Manufacturers:
+
+Contemporary Amperex Technology Co., Ltd. (CATL): 300750 on the Shenzhen Stock Exchange​1​.
+LG Chem, Ltd.: 051910 on the Korea Exchange​2​.
+Panasonic Corporation: 6752 on the Tokyo Stock Exchange and PCRFY in OTC markets​3​​4​.
+BYD Company Limited: BYDDY in OTC markets and 1211 on the Hong Kong Stock Exchange​5​​6​.
+Tesla, Inc.: TSLA on the NASDAQ​7​.
+Solid-State Battery Manufacturers:
+
+Solid Power, Inc.: SLDP on the NASDAQ​8​.
+QuantumScape Corporation: QS on the NYSE​9​.
+"""
+
+
 # Define the ticker symbol
 tickerSymbol = 'MVST'
 
