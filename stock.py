@@ -56,6 +56,7 @@ ls_compt = {'CATL': '300750.SZ', 'LGChem':'051910.KS', 'Pnasonic': '6752.T', 'BY
 
 for com in ls_compt.values():
 
+    ls_compt[com] = fetch_stock_price_via_yfinance(com, '2019-01-01', '2023-05-31')
     print(f'com = {ls_compt[com]}')
 exit()
 
