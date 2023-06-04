@@ -18,7 +18,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
-
+#hello
 
 class StockPrice():
     def __init__(self, ticker, date_from, date_to):
