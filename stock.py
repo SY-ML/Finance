@@ -1,18 +1,20 @@
-import tensorflow as tf
-print("GPU Available: ", tf.config.list_physical_devices('GPU'))
-print("CUDA Version: ", tf.sysconfig.get_build_info()["cuda_version"])
-print("cuDNN Version: ", tf.sysconfig.get_build_info()["cudnn_version"])
+import datetime
+
+# import tensorflow as tf
+# print("GPU Available: ", tf.config.list_physical_devices('GPU'))
+# print("CUDA Version: ", tf.sysconfig.get_build_info()["cuda_version"])
+# print("cuDNN Version: ", tf.sysconfig.get_build_info()["cudnn_version"])
 
 # https://www.kaggle.com/general/272226
 # https://www.kaggle.com/code/faressayah/stock-market-analysis-prediction-using-lstm
 
 import yfinance as yf
 import numpy as np
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from sklearn.preprocessing import MinMaxScaler
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import LSTM, Dense
+# from tensorflow.keras.optimizers import Adam
+# from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
+# from sklearn.preprocessing import MinMaxScaler
 
 
 from sklearn.model_selection import train_test_split
@@ -52,12 +54,26 @@ Solid Power, Inc.: SLDP on the NASDAQ​8​.
 QuantumScape Corporation: QS on the NYSE​9​.
 """
 
-ls_compt = {'CATL': '300750.SZ', 'LGChem':'051910.KS', 'Pnasonic': '6752.T', 'BYD':'BYDDY', 'SolidPower': 'SLDP', 'QuantumScape':'QS', 'Tesla':'TSLA'}
+import datetime
 
-for com in ls_compt.values():
+dict_compt = {
+    'CATL': {'ticker': '300750.SZ', 'data': ''},
+    'LGChem': {'ticker': '051910.KS', 'data': ''},
+    'Panasonic': {'ticker': '6752.T', 'data': ''},
+    'BYD': {'ticker': 'BYDDY', 'data': ''},
+    'SolidPower': {'ticker': 'SLDP', 'data': ''},
+    'QuantumScape': {'ticker': 'QS', 'data': ''},
+    'Tesla': {'ticker': 'TSLA', 'data': ''}
+}
 
-    print(f'com = {ls_compt[com]}')
-exit()
+date_from = '2010-01-01'
+date_to = datetime.datetime.now().strftime('%Y-%m-%d')
+
+for com_name, com_data in dict_compt.items():
+    com_data['data'] = fetch_stock_price_via_yfinance(ticker=com_data['ticker'], date_from=date_from, date_to=date_to)
+
+print(dict_compt)
+
 
 # Define the ticker symbol
 tickerSymbol = 'MVST'
