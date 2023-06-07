@@ -1,5 +1,7 @@
 import datetime
-
+import yfinance as yf
+import os
+import pandas as pd
 # import tensorflow as tf
 # print("GPU Available: ", tf.config.list_physical_devices('GPU'))
 # print("CUDA Version: ", tf.sysconfig.get_build_info()["cuda_version"])
@@ -8,7 +10,6 @@ import datetime
 # https://www.kaggle.com/general/272226
 # https://www.kaggle.com/code/faressayah/stock-market-analysis-prediction-using-lstm
 
-import yfinance as yf
 import numpy as np
 # from tensorflow.keras.models import Sequential
 # from tensorflow.keras.layers import LSTM, Dense
@@ -20,26 +21,6 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
-#hello
-
-class StockPrice():
-    def __init__(self, ticker, date_from, date_to):
-        self._ticker = ticker
-        self._date_from = date_from
-        self._date_to = date_to
-
-    def fetch_stock_price_via_yfinance(self):
-        data = yf.Ticker(self._ticker)
-        data = data.history(period='1d', start=self._date_from, end= self._date_to)
-        return data
-def fetch_stock_price_via_yfinance(ticker, date_from, date_to):
-    data = yf.Ticker(ticker)
-    data = data.history(period='1d', start=date_from, end= date_to)
-    return data
-
-
-
-# sp = StockPrice()
 """
 Lithium-Ion Battery Manufacturers:
 
@@ -54,27 +35,59 @@ Solid Power, Inc.: SLDP on the NASDAQ​8​.
 QuantumScape Corporation: QS on the NYSE​9​.
 """
 
-import datetime
 
-dict_compt = {
-    'CATL': {'ticker': '300750.SZ', 'data': ''},
-    'LGChem': {'ticker': '051910.KS', 'data': ''},
-    'Panasonic': {'ticker': '6752.T', 'data': ''},
-    'BYD': {'ticker': 'BYDDY', 'data': ''},
-    'SolidPower': {'ticker': 'SLDP', 'data': ''},
-    'QuantumScape': {'ticker': 'QS', 'data': ''},
-    'Tesla': {'ticker': 'TSLA', 'data': ''}
+class YFStockPrice():
+    def __init__(self, ticker, date_from, date_to, period='1d'):
+        self._ticker = ticker
+        self._date_from = date_from
+        self._date_to = date_to
+        self._period = period
+
+        self._file_name = f'{ticker}({self._date_from.replace("-", "")}~{self._date_to.replace("-","")})_{period}).csv'
+
+        self.data = self.load_data()
+
+    def fetch_stock_price_via_yfinance(self):
+        data = yf.Ticker(self._ticker)
+        data = data.history(period=self._period, start=self._date_from, end=self._date_to)
+        return data
+
+    def load_data(self):
+        file_path = os.path.join('./yfinance', self._file_name)
+
+        if os.path.exists(file_path):
+            data = pd.read_csv(file_path)
+        else:
+            data = self.fetch_stock_price_via_yfinance()
+            data.to_csv(file_path, index=False)
+
+        return data
+
+
+dict_ticker = {
+    'CATL': '300750.SZ',
+    'LGChem': '051910.KS',
+    'Panasonic': '6752.T',
+    'BYD': 'BYDDY',
+    'SolidPower': 'SLDP',
+    'QuantumScape': 'QS',
+    'Tesla': 'TSLA'
 }
 
 date_from = '2010-01-01'
 date_to = datetime.datetime.now().strftime('%Y-%m-%d')
 
-for com_name, com_data in dict_compt.items():
-    com_data['data'] = fetch_stock_price_via_yfinance(ticker=com_data['ticker'], date_from=date_from, date_to=date_to)
 
-print(dict_compt)
+dict_data = dict_ticker.copy()
+
+for com_name, com_ticker in dict_ticker.items():
+    sp = YFStockPrice(ticker= com_ticker , date_from= date_from, date_to= date_to)
+    dict_data[com_name] = sp.data
 
 
+print(dict_data)
+
+exit()
 # Define the ticker symbol
 tickerSymbol = 'MVST'
 
@@ -140,7 +153,7 @@ history = model.fit(
 )
 
 # Plot the training and validation loss
-plt.figure(figsize=(10,6))
+plt.figure(figsize=(10, 6))
 
 plt.plot(history.history['loss'], label='Training Loss')
 plt.plot(history.history['val_loss'], label='Validation Loss')
