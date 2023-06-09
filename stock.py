@@ -17,7 +17,8 @@ import numpy as np
 # from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 # from sklearn.preprocessing import MinMaxScaler
 
-
+# 060923 출석체크 only :(
+print(1)
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
@@ -35,7 +36,7 @@ Solid Power, Inc.: SLDP on the NASDAQ​8​.
 QuantumScape Corporation: QS on the NYSE​9​.
 """
 
-
+# 060923 출석 only :(
 class YFStockPrice():
     def __init__(self, ticker, date_from, date_to, period='1d'):
         self._ticker = ticker
