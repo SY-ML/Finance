@@ -1,6 +1,6 @@
 from data.dbnomics_data import DBnomicsData
 import data.visualizer as viz
-
+#061924 :(
 if __name__ == '__main__':
     # dbnomics config and data fetching
     dbn_data = DBnomicsData()
